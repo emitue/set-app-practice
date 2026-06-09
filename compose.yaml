@@ -1,11 +1,11 @@
 services:
     laravel.test:
         build:
-            context: './vendor/laravel/sail/runtimes/8.5'
+            context: ./vendor/laravel/sail/runtimes/8.5
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: 'sail-8.5/app'
+        image: sail-8.5/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -25,9 +25,9 @@ services:
             - mysql
     mysql:
         image: 'mysql:8.4'
-        platform: 'linux/amd64'
+        platform: linux/amd64
         ports:
-            - "8000:80"
+            - '8000:80'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_HOST: '%'
@@ -61,7 +61,6 @@ services:
             - sail
         depends_on:
             - mysql
-
 networks:
     sail:
         driver: bridge
